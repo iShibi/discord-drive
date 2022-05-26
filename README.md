@@ -12,7 +12,7 @@ npm i discord-drive -g
 
 ```bash
 PS D:\> ddrive
-Use Discord as a cloud storage
+A CLI tool to use Discord as a cloud storage
 
 VERSION
   discord-drive/0.0.1 win32-x64 node-v16.15.0
