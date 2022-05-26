@@ -8,6 +8,16 @@ A CLI tool to use Discord as a cloud storage
 npm i discord-drive -g
 ```
 
+## Configuration
+
+The cli needs a discord bot token to access the Discord API and a channel id to send messages in. Run the following commands to add them:
+
+```bash
+ ddrive config -t <token> -c <channel_id>
+```
+
+The `token` and `channel_id` will be stored as plaintext in a `ddrive_config.json` file inside the home directory i.e. `os.homedir()` for later use.
+
 ## Preview
 
 ```bash
