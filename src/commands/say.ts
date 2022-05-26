@@ -1,12 +1,21 @@
 import { fetch } from 'undici';
 import { join } from 'node:path';
-import { Command } from '@oclif/core';
+import { Command, Flags } from '@oclif/core';
 import { readFile } from 'node:fs/promises';
 
-export default class Hello extends Command {
-	static override description = 'Say hello in chat';
+export default class Say extends Command {
+	static override description = 'Send a text in chat';
+
+	static override flags = {
+		text: Flags.string({
+			description: 'The text content to send in the chat',
+			char: 't',
+			required: true,
+		}),
+	};
 
 	async run(): Promise<void> {
+		const { flags } = await this.parse(Say);
 		const config = await readFile(join(this.config.configDir, 'config.json'), 'utf8');
 		const { token, channel } = JSON.parse(config);
 		const url = `https://discord.com/api/v10/channels/${channel}/messages`;
@@ -17,7 +26,7 @@ export default class Hello extends Command {
 				Authorization: `Bot ${token}`,
 			},
 			body: JSON.stringify({
-				content: 'Hello!',
+				content: flags.text,
 			}),
 		});
 	}

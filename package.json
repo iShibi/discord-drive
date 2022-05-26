@@ -1,7 +1,7 @@
 {
 	"name": "discord-drive",
-	"version": "0.0.0",
-	"description": "Use Discord as a cloud storage",
+	"version": "0.0.1",
+	"description": "A CLI tool to use Discord as a cloud storage",
 	"author": {
 		"name": "Shubham Parihar",
 		"email": "shubhamparihar391@gmail.com",
@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"build": "shx rm -rf dist && tsc",
-		"build:dev": "tsc -w",
+		"build:dev": "shx rm -rf dist && tsc -w",
 		"lint:check": "eslint . --ext .js,.ts",
 		"lint:fix": "eslint . --ext .js,.ts --fix",
 		"format:check": "prettier --check .",
@@ -61,7 +61,12 @@
 		"topics": {}
 	},
 	"keywords": [
-		"oclif"
+		"oclif",
+		"cli",
+		"discord",
+		"cloud-storage",
+		"typescript",
+		"nodejs"
 	],
 	"license": "Apache-2.0",
 	"bugs": "https://github.com/iShibi/discord-drive/issues",
