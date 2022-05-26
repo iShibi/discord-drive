@@ -11,6 +11,7 @@
 		"sourceType": "module"
 	},
 	"rules": {
+		"padding-line-between-statements": "off",
 		"no-var": 2,
 		"no-mixed-spaces-and-tabs": "error",
 		"comma-dangle": [

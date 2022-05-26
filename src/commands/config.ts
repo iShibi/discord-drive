@@ -1,6 +1,8 @@
 import { join } from 'node:path';
-import { writeFile } from 'node:fs/promises';
+import { homedir } from 'node:os';
+import { existsSync } from 'node:fs';
 import { Command, Flags } from '@oclif/core';
+import { readFile, writeFile } from 'node:fs/promises';
 
 export default class Config extends Command {
 	static override description = 'Set information required by ddrive';
@@ -9,26 +11,29 @@ export default class Config extends Command {
 		token: Flags.string({
 			description: 'The bot token for accessing Discord API',
 			char: 't',
-			required: true,
 		}),
 		channel: Flags.string({
 			description: 'The id of the channel to store files in',
 			char: 'c',
-			required: true,
 		}),
 	};
 
 	async run(): Promise<void> {
 		const { flags } = await this.parse(Config);
+		const configFilePath = join(homedir(), 'ddrive_config.json');
 		try {
-			await writeFile(
-				join(this.config.configDir, 'config.json'),
-				JSON.stringify({
-					token: flags.token,
-					channel: flags.channel,
-				}),
-			);
-			this.log('Config update successfully!');
+			if (existsSync(configFilePath)) {
+				const configData = await readFile(configFilePath, 'utf-8');
+				const newConfigData = JSON.stringify({
+					...JSON.parse(configData),
+					...flags,
+				});
+				await writeFile(configFilePath, newConfigData);
+			} else {
+				const configData = JSON.stringify(flags);
+				await writeFile(configFilePath, configData);
+			}
+			this.log('Updated Config successfully!');
 		} catch (error) {
 			console.error(error);
 		}
