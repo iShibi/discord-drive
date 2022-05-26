@@ -1,0 +1,42 @@
+{
+	"compilerOptions": {
+		"importHelpers": true,
+		"rootDir": "src",
+		/* Projects */
+		"incremental": false, // setting this to true stops generation of the /dist folder
+		/* Language and Environment */
+		"lib": ["ES2020"],
+		"target": "ES2020",
+		/* Modules */
+		"module": "CommonJS",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		/* Emit */
+		"declaration": true,
+		"importsNotUsedAsValues": "error",
+		"outDir": "dist",
+		"stripInternal": true,
+		"preserveConstEnums": true,
+		"removeComments": true,
+		"sourceMap": true,
+		/* Interop Constraints */
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		/* Type Checking */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"exactOptionalPropertyTypes": false,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": false,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"allowUnreachableCode": false,
+		/* Completeness */
+		"skipLibCheck": false
+	},
+	"compileOnSave": true,
+	"include": ["src/**/*"]
+}

@@ -1,0 +1,73 @@
+{
+	"name": "discord-drive",
+	"version": "0.0.0",
+	"description": "Use Discord as a cloud storage",
+	"author": {
+		"name": "Shubham Parihar",
+		"email": "shubhamparihar391@gmail.com",
+		"url": "https://github.com/iShibi"
+	},
+	"scripts": {
+		"build": "shx rm -rf dist && tsc",
+		"build:dev": "tsc -w",
+		"lint:check": "eslint . --ext .js,.ts",
+		"lint:fix": "eslint . --ext .js,.ts --fix",
+		"format:check": "prettier --check .",
+		"format:fix": "prettier --write .",
+		"prepublishOnly": "npm run build"
+	},
+	"bin": {
+		"ddrive": "./bin/run"
+	},
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"/bin",
+		"/dist",
+		"/npm-shrinkwrap.json",
+		"/oclif.manifest.json"
+	],
+	"dependencies": {
+		"@oclif/core": "^1",
+		"@oclif/plugin-help": "^5",
+		"@oclif/plugin-plugins": "^2.0.1",
+		"undici": "^5.3.0"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.35",
+		"@typescript-eslint/eslint-plugin": "^5.26.0",
+		"@typescript-eslint/parser": "^5.26.0",
+		"eslint": "^7.32.0",
+		"eslint-config-oclif": "^4",
+		"eslint-config-oclif-typescript": "^1.0.2",
+		"eslint-config-prettier": "^8.5.0",
+		"globby": "^11",
+		"oclif": "^3",
+		"prettier": "^2.6.2",
+		"shx": "^0.3.3",
+		"ts-node": "^10.2.1",
+		"tslib": "^2.3.1",
+		"typescript": "^4.4.3"
+	},
+	"oclif": {
+		"bin": "ddrive",
+		"dirname": "ddrive",
+		"commands": "./dist/commands",
+		"plugins": [
+			"@oclif/plugin-help",
+			"@oclif/plugin-plugins"
+		],
+		"topicSeparator": " ",
+		"topics": {}
+	},
+	"keywords": [
+		"oclif"
+	],
+	"license": "Apache-2.0",
+	"bugs": "https://github.com/iShibi/discord-drive/issues",
+	"homepage": "https://github.com/iShibi/discord-drive",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iShibi/discord-drive.git"
+	}
+}
